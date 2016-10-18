@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
+
 // create a schema for image type
 //var ImageSchema = new Schema({
  // url : { type : String},
@@ -41,7 +42,7 @@ var leaderSchema = new Schema({
 
 // the schema is useless so far
 // we need to create a model using it
-var Leadership = mongoose.model('Leader', leaderSchema);
+var Leaders = mongoose.model('Leader', leaderSchema);
 
 // make this available to our Node applications
-module.exports = Leadership;
+module.exports = Leaders;

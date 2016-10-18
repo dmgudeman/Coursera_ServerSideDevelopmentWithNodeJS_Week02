@@ -13,7 +13,7 @@ db.once('open', function () {
 
     // create a new dish
     Promotions.create({
-        name: 'Weekend Grand Buffet5',
+        name: 'Weekend Grand Buffet6',
         image: 'images/buffet.png',
         label: 'New',
         price: '19.99',

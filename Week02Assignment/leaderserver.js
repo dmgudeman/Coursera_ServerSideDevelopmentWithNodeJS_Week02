@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     assert = require('assert');
 
-var Dishes = require('./models/dishes');
+var Leadership = require('./models/leadership');
 
 // Connection URL
 var url = 'mongodb://localhost:27017/conFusion';mongoose.connect(url);
@@ -11,58 +11,40 @@ db.once('open', function () {
     // we're connected!
     console.log("Connected correctly to server");
 
-    // create a new dish
-    Dishes.create({
-      name: 'Uthapizza',
-      image: 'images/uthapizza.png',
-      category: 'mains',
-      label: 'Hot',
-      price: '4.99',
-      description: 'A unique . . .',
-      comments: [
-        {
-          rating: 5,
-          comment: 'Imagine all the eatables, living in conFusion!',
-          author: 'John Lemon'
-        },
-        {
-          rating: 4,
-          comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
-          author: 'Paul McVites'
-        }
-      ]
-    }, function (err, dish) {
+    // create a new leader
+    Leadership.create({
+      name: 'Peter Pan',
+      image: 'images/alberto.png',
+      designation: 'Chief Epicurious Officer',
+      abbr: 'CEO',
+      description: 'Our CEO, Peter . . .',
+    }, function (err, leader) {
         if (err) throw err;
-        console.log('Dish created!');
-        console.log(dish);
+        console.log('Leader created!');
+        console.log(leader);
 
-        var id = dish._id;
+        var id = leader._id;
 
-        // get all the dishes
+        // get all the leadership
         setTimeout(function () {
-            Dishes.findByIdAndUpdate(id, {
+            Leadership.findByIdAndUpdate(id, {
                     $set: {
                         description: 'Updated Test'
                     }
                 }, {
                     new: true
                 })
-                .exec(function (err, dish) {
+                .exec(function (err, leader) {
                     if (err) throw err;
-                    console.log('Updated Dish!');
-                    console.log(dish);
+                    console.log('Updated Leader!');
+                    console.log(leader);
 
-                    dish.comments.push({
-                        rating: 5,
-                        comment: 'I\'m getting a sinking feeling!',
-                        author: 'Leonardo di Carpaccio'
-                    });
+                    
 
-                    dish.save(function (err, dish) {
-                        console.log('Updated Comments!');
-                        console.log(dish);
+                    leader.save(function (err, leader) {
+                        console.log(leader);
 
-                        db.collection('dishes').drop(function () {
+                        db.collection('leadership').drop(function () {
                             db.close();
                         });
                     });
