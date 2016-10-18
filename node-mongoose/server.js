@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     assert = require('assert');
 
-var Dishes = require('./models/dishes-3');
+var Dishes = require('./models/dishes');
 
 // Connection URL
 var url = 'mongodb://localhost:27017/conFusion';mongoose.connect(url);
@@ -14,14 +14,23 @@ db.once('open', function () {
     // create a new dish
     Dishes.create({
       name: 'Uthapizza',
-        description: 'Test',
-        comments: [
-            {
-                rating: 3,
-                comment: 'This is insane',
-                author: 'Matt Daemon'
-            }
-        ]
+      image: 'images/uthapizza.png',
+      category: 'mains',
+      label: 'Hot',
+      price: '4.99',
+      description: 'A unique . . .',
+      comments: [
+        {
+          rating: 5,
+          comment: 'Imagine all the eatables, living in conFusion!',
+          author: 'John Lemon'
+        },
+        {
+          rating: 4,
+          comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+          author: 'Paul McVites'
+        }
+      ]
     }, function (err, dish) {
         if (err) throw err;
         console.log('Dish created!');
