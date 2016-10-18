@@ -1,1 +1,5 @@
 node-express-gen/node_modules
+node-mongoose/node_modules
+node-mongoose/data
+node-mongodb/mongodb-osx-x86_64-3.2.10
+node-mongodb/data
